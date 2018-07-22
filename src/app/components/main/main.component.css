@@ -1,0 +1,44 @@
+mat-card
+{
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#title
+{
+  margin-left: 8px;
+}
+
+.separator
+{
+  flex: 1 1 auto;
+}
+
+mat-sidenav
+{
+  width: 248px;
+}
+
+.sidebarContainer
+{
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: none;
+}
+
+.buttonMenu
+{
+  width: 100%;
+  text-align: left;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}

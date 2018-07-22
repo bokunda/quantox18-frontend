@@ -1,0 +1,6 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-tab-label
+{
+  min-width: 50% !important;
+}

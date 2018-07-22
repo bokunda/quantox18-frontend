@@ -1,0 +1,62 @@
+<mat-card>
+
+  <div id="header">
+
+    <mat-toolbar color="primary">
+
+      <mat-toolbar-row class="mat-elevation-z6">
+
+        <button mat-mini-fab (click)="sidenav.toggle();">
+          <mat-icon aria-label="Dugme za leviSidebarMeni">menu</mat-icon>
+        </button>
+
+        <span id="title">Q18 - TicTacToe </span>
+
+        <span class="separator"></span>
+
+        <button mat-button routerLink="/access">
+          Sign In
+        </button>
+
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+
+  </div>
+
+  <div>
+    <mat-sidenav-container class="sidebarContainer">
+      <mat-sidenav #sidenav mode="side" class="leviSidebar" class="mat-elevation-z6">
+        <nav>
+          <div class="sidebarSadrzaj">
+
+            <button mat-button routerLink="/home" class="buttonMenu" routerLinkActive="kliknuo">
+              <mat-icon>home</mat-icon>
+              <span style="margin-left: 6px;">Home</span>
+            </button>
+
+            <button mat-button routerLink="/game" class="buttonMenu" routerLinkActive="kliknuo">
+              <mat-icon>videogame_asset</mat-icon>
+              <span style="margin-left: 6px;">Game</span>
+            </button>
+
+            <button mat-button routerLink="/about" class="buttonMenu" routerLinkActive="kliknuo">
+              <mat-icon>insert_emoticon</mat-icon>
+              <span style="margin-left: 6px;">About</span>
+            </button>
+
+          </div>
+        </nav>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+
+        <router-outlet></router-outlet>
+
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+  </div>
+
+</mat-card>
