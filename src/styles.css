@@ -4,3 +4,34 @@
 {
   min-width: 50% !important;
 }
+
+.centered
+{
+  width: 36%;
+  display: table;
+  margin: 0 auto;
+  margin-top: 64px;
+}
+
+.centered-text
+{
+  text-align: center;
+}
+
+.responsive-img
+{
+  width: 100%;
+  height: auto;
+}
+
+.form-access-input
+{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-access-button
+{
+  width: 100%;
+  margin-top: 10px;
+}

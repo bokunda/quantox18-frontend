@@ -1,0 +1,15 @@
+mat-card
+{
+  display: table;
+  margin: 0 auto;
+  margin-top: 64px;
+  width: 45%;
+}
+
+@media (max-width: 900px)
+{
+  mat-card
+  {
+    width: 90%;
+  }
+}

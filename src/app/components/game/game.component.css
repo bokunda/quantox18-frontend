@@ -1,0 +1,11 @@
+#game
+{
+  display: table;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.player-list
+{
+  margin-top: 10px;
+}

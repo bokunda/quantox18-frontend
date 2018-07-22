@@ -1,3 +1,21 @@
-<p>
-  register works!
-</p>
+<form class="form-access">
+
+  <mat-form-field class="form-access-input">
+    <input matInput placeholder="Name" [formControl]="name" required>
+  </mat-form-field>
+
+  <mat-form-field class="form-access-input">
+    <input matInput placeholder="Email" [formControl]="email" required>
+  </mat-form-field>
+
+  <mat-form-field class="form-access-input">
+    <input matInput type="password" placeholder="Password" [formControl]="password" required>
+  </mat-form-field>
+
+  <mat-form-field class="form-access-input">
+    <input matInput type="password" placeholder="Password confirm" [formControl]="passwordConfirm" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="form-access-button" (click)="register()">Register</button>
+
+</form>
