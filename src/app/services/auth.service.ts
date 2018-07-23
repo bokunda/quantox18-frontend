@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+
+import { EMPTY } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import {Router} from '@angular/router';
 export class AuthService {
 
   private singed: boolean;
+  @Output() isLogged = new EventEmitter<boolean>();
 
   constructor(
     private router: Router,
@@ -17,20 +20,15 @@ export class AuthService {
   signIn(answer: any): void {
     this.singed = true;
 
-    console.log('auth-service->odgovor ' + answer);
-
-    localStorage.setItem('token', 'test-radi');
-    localStorage.setItem('username', 'test-usr');
+    localStorage.setItem('access_token', answer['access_token']);
+    localStorage.setItem('username', answer['data'].name);
+    window.location.replace('/home');
   }
 
   isSigned(): boolean {
-    if (localStorage.getItem('token') != undefined) {
-      this.singed = true;
-      return true;
-    } else {
-      this.singed = false;
-      return false;
-    }
+    localStorage.getItem('access_token') != null ? this.singed = true : this.singed = false;
+    this.isLogged.emit(this.singed);
+    return this.singed;
   }
 
   handleError(err: HttpErrorResponse) {
@@ -39,7 +37,13 @@ export class AuthService {
       console.log('ERROR: ', err.error.message);
     }
 
-    //return new EmptyObservable();
+    return EMPTY;
   }
 
+  logout()
+  {
+    localStorage.clear();
+    //this.router.navigate(['/home']);
+    window.location.replace('/home');
+  }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {User} from '../models/User';
@@ -37,8 +37,6 @@ export class UserService {
   {
     let url = environment.serverUrl + 'login';
 
-    console.log(user.email, user.password);
-
     let header = new HttpHeaders();
     header.set('Accept', 'application/json');
 
@@ -47,5 +45,16 @@ export class UserService {
     fd.append('password', user.password);
 
     return this.http.post(url, fd, {headers: header});
+  }
+
+  getAllUsers(): Observable<any>
+  {
+    let url = environment.serverUrl + 'users';
+
+    let bearerHeader: string = 'Bearer ' + localStorage.getItem('access_token');
+    let header = new HttpHeaders().set('authorization', bearerHeader);
+    header.set('Accept', 'application/json');
+
+    return this.http.get(url, {headers: header});
   }
 }

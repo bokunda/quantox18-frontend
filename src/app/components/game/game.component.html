@@ -1,43 +1,24 @@
 <div id="game">
   <h1>Tic Tac Toe - Game room</h1>
 
-  <h2>Player list</h2>
+  <div *ngIf="signed">
+    <h2>Player list</h2>
 
-  <mat-card class="player-list">
-    <h4>
-      Bokunda
-      <button mat-icon-button color="warn" routerLink="/game/play/1">
-        <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
-      </button>
-    </h4>
-  </mat-card>
+    <mat-card *ngFor="let user of users" class="player-list">
+      <h4>
+        {{user.name}}
+        <button mat-icon-button color="warn" routerLink="/game/play/{{user.id}}">
+          <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
+        </button>
+      </h4>
+    </mat-card>
+  </div>
 
-  <mat-card class="player-list">
-    <h4>
-      Bokunda
-      <button mat-icon-button color="warn" routerLink="/game/play/1">
-        <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
-      </button>
-    </h4>
-  </mat-card>
-
-  <mat-card class="player-list">
-    <h4>
-      Bokunda
-      <button mat-icon-button color="warn" routerLink="/game/play/1">
-        <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
-      </button>
-    </h4>
-  </mat-card>
-
-  <mat-card class="player-list">
-    <h4>
-      Bokunda
-      <button mat-icon-button color="warn" routerLink="/game/play/1">
-        <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
-      </button>
-    </h4>
-  </mat-card>
+  <div *ngIf="!signed">
+    <h2>
+      Sorry, you must be <a routerLink="/access">logged</a> on our site to play the game!
+    </h2>
+  </div>
 
 </div>
 

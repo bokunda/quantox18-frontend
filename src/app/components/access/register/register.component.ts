@@ -41,9 +41,14 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerUser(user).subscribe(answer =>
         {
-          console.log(answer);
-        }
-      );
+          if(answer['access_token'] != null)
+          {
+            this.authService.signIn(answer);
+          }
+        },
+        error => {
+          console.log('ERROR: ' + JSON.stringify(error));
+        });
     }
   }
 }

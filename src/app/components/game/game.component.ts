@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../services/user.service';
+import {User} from '../../models/User';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-game',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public userService: UserService,
+    public authService: AuthService
+  ) { }
+
+  users: User[];
+  signed = false;
 
   ngOnInit() {
+
+    this.userService.getAllUsers().subscribe(answer =>
+    {
+      this.users = answer['data'];
+    });
+
+    this.signed = this.authService.isSigned();
+
   }
 
 }
