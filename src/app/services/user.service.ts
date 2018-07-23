@@ -17,49 +17,35 @@ export class UserService {
 
   registerUser(user: User): Observable<any>
   {
+    console.log(user);
     let url = environment.serverUrl + 'register';
-
-    let req = { user: User }
 
     let header = new HttpHeaders();
     header.set('Accept', 'application/json');
 
-    /*
+    let fd = new FormData();
+    fd.append('name', user.name);
+    fd.append('email', user.email);
+    fd.append('password', user.password);
+    fd.append('passwordConfirm', user.passwordConfirm);
 
-      let fd = new FormData();
-      fd.append('name', user.name);
-      fd.append('email', user.email);
-      fd.append('password', user.password);
-      fd.append('passwordConfirm', user.passwordConfirm);
+    return this.http.post(url, fd, {headers: header});
 
-      return this.http.post(url, fd, {headers: header});
-
-    */
-
-    return this.http.post(url, req, {headers: header});
   }
 
   signInUser(user: User): Observable<any>
   {
     let url = environment.serverUrl + 'login';
 
-    let req = { user: User }
+    console.log(user.email, user.password);
 
     let header = new HttpHeaders();
     header.set('Accept', 'application/json');
 
-    /*
+    let fd = new FormData();
+    fd.append('email', user.email);
+    fd.append('password', user.password);
 
-      let fd = new FormData();
-      fd.append('name', user.name);
-      fd.append('email', user.email);
-      fd.append('password', user.password);
-      fd.append('passwordConfirm', user.passwordConfirm);
-
-      return this.http.post(url, fd, {headers: header});
-
-    */
-
-    return this.http.post(url, req, {headers: header});
+    return this.http.post(url, fd, {headers: header});
   }
 }

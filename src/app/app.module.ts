@@ -17,6 +17,8 @@ import { LoginComponent } from './components/access/login/login.component';
 import { RegisterComponent } from './components/access/register/register.component';
 import { PlayComponent } from './components/game/play/play.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { PlayComponent } from './components/game/play/play.component';
     MaterialComponentsModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

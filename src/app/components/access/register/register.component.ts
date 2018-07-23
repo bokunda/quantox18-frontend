@@ -12,6 +12,8 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+
+
   name = new FormControl('', [Validators.required, Validators.maxLength(10)] );
   email = new FormControl('', [Validators.required, Validators.email, Validators.pattern("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]);
   password = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9\ \.\!\?\#\u0110\u0111\u0106\u0107\u010c\u010d\u017d\u017e\u0160\u0161]{1,}')]);
@@ -36,9 +38,6 @@ export class RegisterComponent implements OnInit {
       user.email = this.email.value;
       user.password = this.password.value;
       user.passwordConfirm = this.passwordConfirm.value;
-
-
-      console.log("Saljem -> name: " + this.name.value, " email: " + this.email.value," pwd: " + this.password.value );
 
       this.userService.registerUser(user).subscribe(answer =>
         {
