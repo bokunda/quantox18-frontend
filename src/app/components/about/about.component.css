@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Merienda:700');
+.mat-grid-tile {
+    font-family: 'Merienda', cursive;
+    font-size: 2vw;
+}
+.mat-card-content {
+    font-family: 'Merienda', cursive;
+    font-size: 3vw;
+}
+.about {
+    max-width: 70% !important;
+    margin: 0 auto;
+    margin-top: 64px;
+    background-color: #3f51b5;
+    color: #fff;
+    
+}
