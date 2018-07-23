@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import {User} from '../../../models/User';
-<<<<<<< HEAD
-import {UserService} from '../../../services/user.service';
-=======
 import { UserService } from '../../../services/user.service';
->>>>>>> 8c24108d3036453185a86d0c11f26e745f36950b
 
 @Component({
   selector: 'app-login',
