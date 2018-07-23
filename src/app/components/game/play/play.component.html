@@ -7,6 +7,81 @@
 
     <div id="game">
 
+      <mat-grid-list class="board" cols="3" rowHeight="1:1">
+        <mat-grid-tile (click)="makeMove(1)">
+            <div *ngIf="boardField1==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField1==1">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(2)">
+            <div *ngIf="boardField2==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField2==2">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(3)">
+            <div *ngIf="boardField3==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField3==3">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(4)">
+            <div *ngIf="boardField4==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField4==4">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(5)">
+            <div *ngIf="boardField5==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField5==5">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(6)">
+            <div *ngIf="boardField6==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField6==6">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(7)">
+            <div *ngIf="boardField7==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField7==7">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(8)">
+            <div *ngIf="boardField8==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField8==8">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="makeMove(9)">
+            <div *ngIf="boardField9==0">
+                <img src="/assets/images/blanko.png" height="70%" width="70%">
+            </div>
+            <div *ngIf="boardField9==9">
+                <img src="/assets/images/{{onMove}}{{onColor}}.png" height="70%" width="70%">
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+          
 
 
     </div>
