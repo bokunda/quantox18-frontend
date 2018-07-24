@@ -7,7 +7,7 @@
     <mat-card *ngFor="let user of users" class="player-list">
       <h4>
         {{user.name}}
-        <button mat-icon-button color="warn" routerLink="/game/play/{{user.id}}">
+        <button mat-icon-button color="accent" routerLink="/game/play/{{user.id}}">
           <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
         </button>
       </h4>

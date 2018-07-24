@@ -2,3 +2,11 @@
 {
 
 }
+#info {
+    font-family: 'Merienda', cursive;
+    font-size: 3vw;
+}
+.mat-raised-button {
+    color:#d81b60;
+}
+

@@ -26,6 +26,7 @@ import { MatSortModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 const MATERIAL_MODULES = [
   CommonModule,
@@ -52,7 +53,8 @@ const MATERIAL_MODULES = [
   MatSortModule,
   MatTooltipModule,
   MatSlideToggleModule,
-  MatGridListModule
+  MatGridListModule,
+  MatButtonToggleModule
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Merienda:700');
 
 .mat-tab-label
 {
@@ -34,4 +35,12 @@
 {
   width: 100%;
   margin-top: 10px;
+}
+.globalBackgound{
+  background-color: #6300ee6b;
+  background-image: -webkit-linear-gradient(150deg, #d81b60 35%, #fff 35%);
+  min-height: 100%;
+}
+.mat-raised-button {
+  color:#d81b60;
 }
