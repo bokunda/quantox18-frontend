@@ -19,7 +19,6 @@ import { PlayComponent } from './components/game/play/play.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,

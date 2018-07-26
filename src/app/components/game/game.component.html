@@ -2,12 +2,22 @@
   <h1>Tic Tac Toe - Game room</h1>
 
   <div *ngIf="signed">
+
+    <mat-card *ngFor="let ug of userGames" class="player-list">
+      <h5>
+        {{ug.game_id}} | {{ug.opponent}} | <button mat-icon-button ><mat-icon>alarm</mat-icon></button>
+      </h5>
+    </mat-card>
+
+  </div>
+
+  <div *ngIf="signed">
     <h2>Player list</h2>
 
     <mat-card *ngFor="let user of users" class="player-list">
       <h4>
         {{user.name}}
-        <button mat-icon-button color="warn" routerLink="/game/play/{{user.id}}">
+        <button mat-icon-button color="warn" routerLink="/game/play/{{user.id}}" (click)="challengePlayer(user.id)">
           <mat-icon aria-label="Challenge player">play_circle_outline</mat-icon>
         </button>
       </h4>

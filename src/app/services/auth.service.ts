@@ -22,6 +22,7 @@ export class AuthService {
 
     localStorage.setItem('access_token', answer['access_token']);
     localStorage.setItem('username', answer['data'].name);
+    localStorage.setItem('id', answer['data'].id);
     window.location.replace('/home');
   }
 
