@@ -1,12 +1,32 @@
-#poweredBy
-{
-
-}
 #info {
     font-family: 'Merienda', cursive;
-    font-size: 3vw;
+    font-size:calc(12px + 1.5vw);
+    
+}
+#game {
+    
+    display: table;
+    margin: 0 auto;
+    margin-top: 64px;
 }
 .mat-raised-button {
     color:#d81b60;
+    font-size:calc(5px + 1vw);
+}
+#poweredBy
+{
+    font-size:calc(10px + 1.5vw);
+}
+@media screen and (min-width: 1200px) {
+    #info {
+        font-size: 28px;
+    }
+    #poweredBy {
+        width: 20%;
+        font-size: 20px;
+    }
+    .mat-raised-button {
+        font-size:20px !important;
+    }
 }
 
