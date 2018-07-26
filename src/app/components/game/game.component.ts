@@ -88,7 +88,7 @@ export class GameComponent implements OnInit {
     //   this.scrollTop()
     // })
 
-    owindow.Echo.private('game.4')
+    window.Echo.private('game.4')
     // .here((users)=>{
     //    console.log(users);
     //   users.forEach(element => {

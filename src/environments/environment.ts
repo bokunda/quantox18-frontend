@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
+// <<<<<<< HEAD
   serverUrl: 'http://tictactoe.loc/api/v1/'
+// =======
+//   serverUrl: 'http://localhost/quantox18-backend/public/api/v1/'
+// >>>>>>> afd3c717994eabcb37b7e0762f247ebbc381bb37
 };
 
 /*

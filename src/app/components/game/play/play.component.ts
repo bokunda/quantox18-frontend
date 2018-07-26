@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MaterialComponentsModule} from '../../../moduls/material-components.module';
 
 @Component({
   selector: 'app-play',
@@ -27,6 +28,9 @@ export class PlayComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+  public playAgain() {
+    //pozvati metodu samo iz servisa
   }
 
   public makeMove(b) {
