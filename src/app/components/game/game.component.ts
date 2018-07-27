@@ -6,6 +6,7 @@ import {GameService} from '../../services/game.service';
 
 import { Echo } from 'laravel-echo';
 import * as io from 'socket.io-client';
+import {Router} from '@angular/router';
 
 
 declare var Echo: any;
@@ -29,24 +30,23 @@ export class GameComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService,
     public gameService: GameService,
+    public router: Router
   ) { window.io = io; }
 
   users = [];
   signed = false;
 
+  challenges = [];
+
   userGames = [];
 
+  id_Challenge = null;
+
+  myUsername = localStorage.getItem('username');
 
   ngOnInit() {
 
-    // this.userService.getAllUsers().subscribe(answer =>
-    // {
-    //   this.users = answer['data'];
-    // });
-
     this.signed = this.authService.isSigned();
-
-    this.listUserGames(14);
 
     let token = 'Bearer ' + localStorage.getItem('access_token');
     window.io = window.io;
@@ -66,79 +66,97 @@ export class GameComponent implements OnInit {
 
         });
 
+    // list users
 
-    //window.Echo.channel('lobby').listen('GameEvent', () => { console.log('data'); });
+    window.Echo.join('lobby')
+      .here((users) => {
+        //console.log(users);
+        users.forEach(element => {
+          if(element.id != localStorage.getItem('id'))
+            this.users.push(element);
 
-    // let chanel = Echo.join('lobby');
-    //
-    // chanel.here((users) => {
-    //   console.log(users);
-    // });
-    //   users.forEach(el => {
-    //     this.users.push(el)
-    //   })
-    // }).joining((user) => {
-    //   if (this.users.indexOf(user) == -1) {
-    //     this.users.push(user)
-    //   }
-    // }).leaving((user) => {
-    //   this.users.splice(this.users.indexOf(user), 1)
-    // }).listen('NewMessageEvent', (event) => {
-    //   this.messages.unshift(event.message)
-    //   this.scrollTop()
-    // })
-
-    window.Echo.private('game.4')
-    // .here((users)=>{
-    //    console.log(users);
-    //   users.forEach(element => {
-    //     this.users.push(element);
-    //
-    //   });
-    // })
-    //   .joining((user)=>{
-    //   if (this.users.indexOf(user)==-1)
-    //     this.users.push(user);
-    // })
-    //   .leaving((user)=>{
-    //   this.users.splice(this.users.indexOf(user));
-    // })
-      .listen('GameEvent', (data) => {
-        console.log('From laravel echo: ', data);
+        });
+      })
+      .joining((user) => {
+        if (this.users.indexOf(user) == -1)
+          this.users.push(user);
+      })
+      .leaving((user) => {
+        this.users.splice(this.users.indexOf(user));
       });
 
+    // list challenges
+    //
+    window.Echo.private('user.' + localStorage.getItem('id'))
+      .listen('ChallengeEvent', (data) => {
+        console.log(data);
+
+        // for(let i = 0; i < this.challenges.length; i++)
+        // {
+        //   if((this.challenges[i].player_one != data.player_one && this.challenges[i].player_two != data.player_two) || (this.challenges[i].player_one != data.player_two && this.challenges[i].player_two != data.player_one))
+        //   {
+        //     this.challenges.push(data.challenge);
+        //   }
+        // }
+
+        this.challenges.push(data.challenge);
+
+        console.log('usr: ' + localStorage.getItem('username'));
+
+      });
 
   }
 
   challengePlayer(userID: number) {
-    this.gameService.challengeUser(userID).subscribe(response => {
+
+    this.gameService.challengePlayer(userID).subscribe(response => {
           console.log(response);
+          this.userGames.push(response);
+          this.id_Challenge = response.id;
+
+      window.Echo.private('challenge.' + this.id_Challenge)
+        .listen('GameEvent', (data1) => {
+          console.log('123456');
+          console.log(data1.game.id);
+
+          //this.router.navigate(['game', 'play', data1.game.id]);
+
+          window.location.replace('' + window.location.href + '/play/' + data1.game.id);
+          //console.log(window.location.href + '/play/1 ');
+          //window.location = window.location.href + '/play/' + data1.game.id;
+
+        });
+
+          console.log('ID CHALLENGE-a', this.id_Challenge);
       }
     );
   }
 
-  listUserGames(userID: number) {
-    // this.gameService.listGames().subscribe(response =>
-    // {
-    //   console.log('response', response);
-    //   let array = response.data;
-    //
-    //   for(let i = 0; i < array.length; i++)
-    //   {
-    //     if((array[i].challenge.data.user_one.data[0].name == localStorage.getItem('username') || array[i].challenge.data.user_two.data[0].name) && array[i].started != 1)
-    //     {
-    //
-    //       let opponent;
-    //       array[i].user_one['data'][0].name == localStorage.getItem('username') ? opponent = array[i].user_one['data'][0].name : opponent = array[i].user_two['data'][0].name;
-    //
-    //       this.userGames.push({'game_id' : 1, 'opponent' : opponent, 'opponent_id' : 1});
-    //       console.log(this.userGames);
-    //     }
-    //   }
-    //
-    // });
+  acceptChallange(challangeID: number)
+  {
+    this.gameService.acceptChallenge(challangeID, localStorage.getItem('id')).subscribe(response => {
+      console.log('prihvatio', response);
+      //window.location = window.location.href + '/play/' + data1.game.id;
+      //this.router.navigate(['game', 'play', response.id]);
+
+      window.location.replace('' + window.location.href + '/play/' + response.id);
+
+    });
+
+    this.id_Challenge = challangeID;
   }
 
+  getNameById(userID: number): string
+  {
+    for(let i = 0; i < this.users.length; i++)
+    {
+      if(this.users[i].id == userID)
+      {
+        return this.users[i].user;
+      }
+    }
 
+    return null;
+  }
 
 }

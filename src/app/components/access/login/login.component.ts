@@ -4,6 +4,7 @@ import {User} from '../../../models/User';
 import { UserService } from '../../../services/user.service';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -54,7 +55,12 @@ export class LoginComponent implements OnInit {
         }
       },
         error => {
-          console.log('ERROR: ' + JSON.stringify(error));
+          console.log('ERROR: ' + error.error.message);
+          swal({
+            type: 'error',
+            title: 'Oops...',
+            text: error.error.message
+          })
           this.afterLogin.emit(false);
         });
     }

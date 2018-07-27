@@ -3,22 +3,26 @@
 
   <div *ngIf="signed">
 
-    <mat-card *ngFor="let ug of userGames" class="player-list">
-      <h5>
-        {{ug.game_id}} | {{ug.opponent}} | <button mat-icon-button ><mat-icon>alarm</mat-icon></button>
-      </h5>
+    <mat-card *ngFor="let c of challenges" class="player-list">
+      <mat-chip-list>
+        <mat-chip color="warn" selected>{{ getNameById(c.user_one) }}</mat-chip> vs
+        <mat-chip color="primary" selected>{{ myUsername }} </mat-chip>
+        <button mat-mini-fab (click)="acceptChallange(c.id)" ><mat-icon>done</mat-icon></button>
+      </mat-chip-list>
     </mat-card>
 
   </div>
+
+  <br><br>
 
   <div *ngIf="signed">
     <h2>Player list</h2>
 
     <mat-card *ngFor="let user of users" class="player-list">
       <h4>
-        {{user.name}}
+        {{user.user}}
 <!--<<<<<<< HEAD-->
-        <button mat-icon-button color="warn" routerLink="/game/play/{{user.id}}" (click)="challengePlayer(user.id)">
+        <button mat-icon-button color="warn" (click)="challengePlayer(user.id)">
 <!--=======-->
         <!--<button mat-icon-button color="accent" routerLink="/game/play/{{user.id}}">-->
 <!--&gt;>>>>>> afd3c717994eabcb37b7e0762f247ebbc381bb37-->

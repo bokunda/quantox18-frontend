@@ -4,6 +4,7 @@ import {User} from '../../../models/User';
 import {UserService} from '../../../services/user.service';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register',
@@ -47,6 +48,11 @@ export class RegisterComponent implements OnInit {
           }
         },
         error => {
+          swal({
+            type: 'error',
+            title: 'Oops...',
+            text: error.error.message
+          })
           console.log('ERROR: ' + JSON.stringify(error));
         });
     }
